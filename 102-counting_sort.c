@@ -19,7 +19,8 @@ max = array[i];
 return (max);
 }
 /**
- * counting_sort - Sort an array of integers in ascending order using counting sort.
+ * counting_sort - Sort an array of integers in
+ *                ascending order using counting sort.
  * @array: The array to be sorted.
  * @size: The size of the array.
  */
