@@ -13,7 +13,7 @@ if ((*shaker)->prev != NULL)
 (*shaker)->prev->next = tmp;
 else
 *list = tmp;
-tmp->prev = (*shaker)->prev;
+ tmp->prev = (*shaker)->prev;
 (*shaker)->next = tmp->next;
 if (tmp->next != NULL)
 tmp->next->prev = *shaker;
@@ -31,14 +31,14 @@ tmp->next = *shaker;
  */
 void swap_backward(listint_t **list, listint_t **tail, listint_t **shaker)
 {
-listint_t *tmp = (*shaker)->prev;
+ listint_t *tmp = (*shaker)->prev;
 if ((*shaker)->next != NULL)
 (*shaker)->next->prev = tmp;
 else
 *tail = tmp;
-tmp->next = (*shaker)->next;
+ tmp->next = (*shaker)->next;
 (*shaker)->prev = tmp->prev;
-if (tmp->prev != NULL)
+ if (tmp->prev != NULL)
 tmp->prev->next = *shaker;
 else
 *list = *shaker;
@@ -72,11 +72,11 @@ shaken_not_stirred = false;
 }
 for (shaker = shaker->prev; shaker != *list; shaker = shaker->prev)
 {
-if (shaker->n < shaker->prev->n)
-{
-swap_backward(list, &tail, &shaker);
-shaken_not_stirred = false;
-}        
+  if (shaker->n < shaker->prev->n)
+ {
+ swap_backward(list, &tail, &shaker);
+ shaken_not_stirred = false;
+ }        
 }
 }
 print_list((const listint_t *)*list);

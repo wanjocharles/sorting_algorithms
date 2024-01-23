@@ -1,8 +1,7 @@
 #include "sort.h"
 
 /**
- * swap_forward - Swap two adjacent elements
- *                in a linked list in forward direction.
+ * swap_forward - Swap two adjacent elements in a linked list in forward direction.
  * @list: Pointer to the head of the linked list.
  * @tail: Pointer to the tail of the linked list.
  * @shaker: Pointer to the current node being considered.
@@ -24,10 +23,8 @@ else
 tmp->next = *shaker;
 *shaker = tmp;
 }
-
 /**
- * swap_backward - Swap two adjacent elements
- *                 in a linked list in backward direction.
+ * swap_backward - Swap two adjacent elements in a linked list in backward direction.
  * @list: Pointer to the head of the linked list.
  * @tail: Pointer to the tail of the linked list.
  * @shaker: Pointer to the current node being considered.
@@ -51,8 +48,7 @@ tmp->prev = *shaker;
 }
 
 /**
- * cocktail_sort_list - Sort a doubly linked list in
- *                      ascending order using Cocktail Shaker Sort.
+ * cocktail_sort_list - Sort a doubly linked list in ascending order using Cocktail Shaker Sort.
  * @list: Pointer to the head of the linked list.
  */
 void cocktail_sort_list(listint_t **list)
@@ -71,7 +67,6 @@ for (shaker = *list; shaker != tail; shaker = shaker->next)
 if (shaker->n > shaker->next->n)
 {
 swap_forward(list, &tail, &shaker);
-print_list((const listint_t *)*list);
 shaken_not_stirred = false;
 }
 }
@@ -80,10 +75,10 @@ for (shaker = shaker->prev; shaker != *list; shaker = shaker->prev)
 if (shaker->n < shaker->prev->n)
 {
 swap_backward(list, &tail, &shaker);
-print_list((const listint_t *)*list);
 shaken_not_stirred = false;
+}        
 }
 }
-}
+print_list((const listint_t *)*list);
 }
 
