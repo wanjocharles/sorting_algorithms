@@ -1,5 +1,10 @@
 #include "sort.h"
 
+/** exchangeNodes - Swap two nodes in a doubly linked list.
+ * @head: Pointer to the head of the list.
+ * @node1: Pointer to the first node to be swapped.
+ * @node2: Pointer to the second node to be swapped.
+ */
 void exchangeNodes(listint_t **head, listint_t **node1, listint_t *node2)
 {
 (*node1)->next = node2->next;
@@ -15,6 +20,9 @@ else
 *node1 = node2->prev;
 }
 
+/** insertion_sort_list - Sort a doubly linked list using the insertion sort algorithm.
+ * @list: Pointer to the head of the list.
+ */
 void insertion_sort_list(listint_t **list)
 {
 listint_t *current, *toInsert, *temp;
