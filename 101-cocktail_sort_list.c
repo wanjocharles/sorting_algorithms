@@ -1,12 +1,17 @@
 #include "sort.h"
 
+void swap_node_forward(listint_t **list, listint_t **tail, listint_t **shaker);
+void swap_node_backward(listint_t **list, listint_t **tail, listint_t **shaker);
+void cocktail_sort_list(listint_t **list);
+
 /**
- * swap_forward - Swap two adjacent elements in a linked list in forward direction.
- * @list: Pointer to the head of the linked list.
- * @tail: Pointer to the tail of the linked list.
- * @shaker: Pointer to the current node being considered.
+ * swap_node_forward - Swap a node in a doubly-linked list of integers
+ *                     with the node ahead of it using the cocktail shaker algorithm.
+ * @list: A pointer to the head of the doubly-linked list.
+ * @tail: A pointer to the tail of the doubly-linked list.
+ * @shaker: A pointer to the current node being considered for swapping.
  */
-void swap_forward(listint_t **list, listint_t **tail, listint_t **shaker)
+void swap_node_forward(listint_t **list, listint_t **tail, listint_t **shaker)
 {
 listint_t *tmp = (*shaker)->next;
 if ((*shaker)->prev != NULL)
@@ -23,13 +28,15 @@ else
 tmp->next = *shaker;
 *shaker = tmp;
 }
+
 /**
- * swap_backward - Swap two adjacent elements in a linked list in backward direction.
- * @list: Pointer to the head of the linked list.
- * @tail: Pointer to the tail of the linked list.
- * @shaker: Pointer to the current node being considered.
+ * swap_node_backward - Swap a node in a doubly-linked list of integers
+ *                      with the node behind it using the cocktail shaker algorithm.
+ * @list: A pointer to the head of the doubly-linked list.
+ * @tail: A pointer to the tail of the doubly-linked list.
+ * @shaker: A pointer to the current node being considered for swapping.
  */
-void swap_backward(listint_t **list, listint_t **tail, listint_t **shaker)
+void swap_node_backward(listint_t **list, listint_t **tail, listint_t **shaker)
 {
 listint_t *tmp = (*shaker)->prev;
 if ((*shaker)->next != NULL)
@@ -48,8 +55,9 @@ tmp->prev = *shaker;
 }
 
 /**
- * cocktail_sort_list - Sort a doubly linked list in ascending order using Cocktail Shaker Sort.
- * @list: Pointer to the head of the linked list.
+ * cocktail_sort_list - Sort a doubly-linked list of integers in ascending order
+ *                      using the cocktail shaker algorithm.
+ * @list: A pointer to the head of the doubly-linked list.
  */
 void cocktail_sort_list(listint_t **list)
 {
@@ -66,7 +74,8 @@ for (shaker = *list; shaker != tail; shaker = shaker->next)
 {
 if (shaker->n > shaker->next->n)
 {
-swap_forward(list, &tail, &shaker);
+swap_node_forward(list, &tail, &shaker);
+print_list((const listint_t *)*list);
 shaken_not_stirred = false;
 }
 }
@@ -74,11 +83,11 @@ for (shaker = shaker->prev; shaker != *list; shaker = shaker->prev)
 {
 if (shaker->n < shaker->prev->n)
 {
-swap_backward(list, &tail, &shaker);
-shaken_not_stirred = false;
-}        
-}
-}
+swap_node_backward(list, &tail, &shaker);
 print_list((const listint_t *)*list);
+shaken_not_stirred = false;
+}
+}
+}
 }
 
