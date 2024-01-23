@@ -42,7 +42,7 @@ if (array[above] > *pivot)
 swap_ints(array + above, pivot);
 print_array(array, size);
 }
-return above;
+return (above);
 }
 
 /**
@@ -74,7 +74,7 @@ lomuto_sort(array, size, part + 1, right);
 void quick_sort(int *array, size_t size)
 {
 if (array == NULL || size < 2)
-return;
+return ();
 lomuto_sort(array, size, 0, size - 1);
 }
 
