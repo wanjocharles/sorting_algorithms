@@ -22,7 +22,8 @@ else
 }
 
 /**
-* insertion_sort_list - Sort a doubly linked list using the insertion sort algorithm.
+* insertion_sort_list - Sort a doubly linked list
+* using the insertion sort algorithm.
 * @list: Pointer to the head of the list.
 */
 void insertion_sort_list(listint_t **list)
